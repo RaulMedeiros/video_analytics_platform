@@ -174,17 +174,17 @@ These are not engineering phases — they are portfolio deliverables that ship a
 
 ---
 
-## Gap Inventory — Known Unknowns
+## Gap Inventory — Resolved Decisions
 
-Tracked so they don't hide. Each resolved with a dated ADR when the call is made.
+All known unknowns have been resolved. Each will be formalized as a dated ADR at the relevant phase.
 
-- **Evaluation dataset selection.** MOT17, a COCO subset, a custom indoor-scenes set, or a mix. Decided in Phase 1C.
-- **Cluster cost and hardware strategy.** A 24/7 GPU K8s cluster is expensive. Options under evaluation: Hetzner / OVH dedicated GPU server, spot instances with interruption handling, sleep-on-idle demo environment. ADR due by end of Phase 0.
-- **TorchServe vs. Triton.** Phase 2A spike required before committing.
-- **Model licensing.** YOLOv8 is AGPL, compatible with GPL-3.0 here but flagged in the README; alternate models evaluated for permissive-license-preferring users.
-- **Privacy posture for demo streams.** The pinned sample stream solves it for demo mode; self-deployers receive clear guidance in the deployment docs.
-- **Edge hardware target.** Jetson Orin, Xavier, AWS Panorama, or Azure Percept. Picked at start of Phase 3A based on access.
-- **Commercial model.** Whether any phase pivots to paid hosting, sponsored deployments, or consulting engagements. Reviewed at end of Phase 2.
+- **Evaluation dataset selection.** ✅ **MOT17 only.** Single benchmark for tracking evaluation in Phase 1C. Keeps the harness simple; revisit if detection mAP becomes a first-class deliverable.
+- **Cluster cost and hardware strategy.** ✅ **Sleep-on-idle demo environment.** Scale to zero when not in use to minimize cost. Cold-start latency is acceptable for a portfolio demo. ADR to be written by end of Phase 0.
+- **TorchServe vs. Triton.** ✅ **Triton Inference Server.** Chosen for Phase 2A for its multi-framework support (ONNX, TensorRT, PyTorch) and superior throughput at scale. Phase 2A spike will validate integration before full rollout.
+- **Model licensing.** ✅ **Ship both.** YOLOv8 (AGPL) as the default — largest ecosystem, best Phase 1 velocity. A permissive-licensed alternative (e.g. RT-DETR) documented and maintained for consulting clients who cannot accept AGPL. README updated to surface both options.
+- **Privacy posture for demo streams.** ✅ **Pinned sample stream for demo mode.** Self-deployers receive explicit guidance in deployment docs. No live camera footage from third parties used in the public demo.
+- **Edge hardware target.** ✅ **NVIDIA Jetson Orin.** Best-in-class edge GPU, first-class TensorRT support, targeted for Phase 3A. Deployment docs and trimmed inference pipeline scoped to Orin.
+- **Commercial model.** ✅ **Consulting / sponsored deployments.** No pivot to closed-source or hosted SaaS. GPL-3.0 stays; revenue comes from deployment help and sponsored feature work for commercial clients. Reviewed again at end of Phase 2C.
 
 ---
 
