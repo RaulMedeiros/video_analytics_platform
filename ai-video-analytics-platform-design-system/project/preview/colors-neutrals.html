@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px; }
+  .title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 14px; }
+  .ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
+  .step { height: 44px; border-radius: 4px; display: flex; align-items: flex-end; justify-content: center; padding: 4px; font: 500 10px/12px var(--font-mono); }
+  .lbl { font: 400 10px/12px var(--font-mono); color: var(--fg-3); text-align: center; margin-top: 4px; }
+  .labels { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
+</style></head>
+<body>
+  <div class="title">Neutral scale · gray 0 → 950</div>
+  <div class="ramp">
+    <div class="step" style="background: #ffffff; color: #0b0f14">0</div>
+    <div class="step" style="background: #f7f8fa; color: #0b0f14">25</div>
+    <div class="step" style="background: #eef1f5; color: #0b0f14">50</div>
+    <div class="step" style="background: #e2e6ec; color: #0b0f14">100</div>
+    <div class="step" style="background: #c7ccd4; color: #0b0f14">200</div>
+    <div class="step" style="background: #a0a6b1; color: #0b0f14">300</div>
+    <div class="step" style="background: #737a86; color: #fff">400</div>
+    <div class="step" style="background: #545a65; color: #fff">500</div>
+    <div class="step" style="background: #3a414c; color: #fff">600</div>
+    <div class="step" style="background: #242a34; color: #fff">700</div>
+    <div class="step" style="background: #12171f; color: #fff">850</div>
+  </div>
+  <div class="labels">
+    <div class="lbl">#ffffff</div>
+    <div class="lbl">#f7f8fa</div>
+    <div class="lbl">#eef1f5</div>
+    <div class="lbl">#e2e6ec</div>
+    <div class="lbl">#c7ccd4</div>
+    <div class="lbl">#a0a6b1</div>
+    <div class="lbl">#737a86</div>
+    <div class="lbl">#545a65</div>
+    <div class="lbl">#3a414c</div>
+    <div class="lbl">#242a34</div>
+    <div class="lbl">#12171f</div>
+  </div>
+</body></html>

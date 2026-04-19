@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px; display: flex; flex-direction: column; gap: 22px; }
+  .row { display: flex; align-items: center; gap: 32px; }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border-1);
+    border-radius: 8px; padding: 28px 24px;
+    display: flex; align-items: center; gap: 18px;
+    min-width: 280px;
+  }
+  .card.light { background: #ffffff; border-color: rgba(15,23,42,.08); color: #0f172a; }
+  .caption { font: 500 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); margin-top: 10px; }
+
+  .logo { width: 40px; height: 40px; color: var(--primary); flex-shrink: 0; }
+  .wordmark { display: flex; flex-direction: column; gap: 2px; }
+  .brand { font: 600 18px/22px var(--font-sans); letter-spacing: -.01em; }
+  .tag   { font: 400 12px/16px var(--font-sans); color: var(--fg-2); }
+  .card.light .tag { color: #475569; }
+</style></head>
+<body>
+  <div class="row">
+    <div>
+      <div class="card">
+        <svg class="logo" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.75"/>
+          <circle cx="16" cy="16" r="5" fill="currentColor"/>
+          <path d="M16 3 L21 10 L11 10 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16 29 L11 22 L21 22 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M3 16 L10 11 L10 21 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M29 16 L22 21 L22 11 Z" fill="currentColor" opacity="0.9"/>
+          <line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+        </svg>
+        <div class="wordmark">
+          <div class="brand">Aperture Analytics</div>
+          <div class="tag">AI video analytics platform</div>
+        </div>
+      </div>
+      <div class="caption">Dark · primary</div>
+    </div>
+    <div>
+      <div class="card light" style="color: #1d4ed8">
+        <svg class="logo" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.75"/>
+          <circle cx="16" cy="16" r="5" fill="currentColor"/>
+          <path d="M16 3 L21 10 L11 10 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16 29 L11 22 L21 22 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M3 16 L10 11 L10 21 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M29 16 L22 21 L22 11 Z" fill="currentColor" opacity="0.9"/>
+          <line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+        </svg>
+        <div class="wordmark">
+          <div class="brand" style="color: #0f172a">Aperture Analytics</div>
+          <div class="tag">AI video analytics platform</div>
+        </div>
+      </div>
+      <div class="caption">Light</div>
+    </div>
+  </div>
+
+  <div>
+    <div style="display: flex; align-items: center; gap: 22px;">
+      <div style="width: 32px; height: 32px; color: var(--primary);">
+        <svg viewBox="0 0 32 32" fill="none" width="32" height="32">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.75"/>
+          <circle cx="16" cy="16" r="5" fill="currentColor"/>
+          <path d="M16 3 L21 10 L11 10 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16 29 L11 22 L21 22 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M3 16 L10 11 L10 21 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M29 16 L22 21 L22 11 Z" fill="currentColor" opacity="0.9"/>
+        </svg>
+      </div>
+      <div style="width: 24px; height: 24px; color: var(--primary);">
+        <svg viewBox="0 0 32 32" fill="none" width="24" height="24">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="16" r="5" fill="currentColor"/>
+          <path d="M16 3 L21 10 L11 10 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M16 29 L11 22 L21 22 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M3 16 L10 11 L10 21 Z" fill="currentColor" opacity="0.9"/>
+          <path d="M29 16 L22 21 L22 11 Z" fill="currentColor" opacity="0.9"/>
+        </svg>
+      </div>
+      <div style="width: 16px; height: 16px; color: var(--primary);">
+        <svg viewBox="0 0 32 32" fill="none" width="16" height="16">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="16" cy="16" r="6" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+    <div class="caption">Glyph scales · 32 / 24 / 16 px</div>
+  </div>
+</body></html>

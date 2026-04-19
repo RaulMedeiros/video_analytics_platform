@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px; }
+  .title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .tile { border: 1px solid var(--border-1); background: var(--surface-1); border-radius: 8px; padding: 14px 16px; }
+  .tile.comfort { height: 80px; display: grid; grid-template-rows: 40px 40px; align-items: stretch; padding: 0; overflow: hidden;}
+  .rowC { height: 40px; display: flex; align-items: center; padding: 0 14px; font: 400 14px/20px var(--font-sans); color: var(--fg-1); border-bottom: 1px solid var(--border-1); font-variant-numeric: tabular-nums; }
+  .rowC:last-child { border-bottom: none; }
+  .tile.compact { height: 80px; display: grid; grid-template-rows: 32px 32px 16px; align-items: stretch; padding: 0; overflow: hidden;}
+  .rowS { height: 32px; display: flex; align-items: center; padding: 0 14px; font: 400 13px/18px var(--font-sans); color: var(--fg-1); border-bottom: 1px solid var(--border-1); font-variant-numeric: tabular-nums; }
+  .rowS:last-of-type { border-bottom: 1px solid var(--border-1); }
+  .caption { font: 500 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); margin-top: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--live); margin-right: 10px; flex-shrink: 0; }
+  .dot.warn { background: var(--warning); }
+  .id { font-family: var(--font-mono); color: var(--fg-2); font-size: 12px; margin-left: auto; }
+</style></head>
+<body>
+  <div class="title">Density · row heights</div>
+  <div class="grid">
+    <div>
+      <div class="tile comfort">
+        <div class="rowC"><span class="dot"></span>Warehouse NE-04 <span class="id">ST-00421</span></div>
+        <div class="rowC"><span class="dot warn"></span>Lobby west <span class="id">ST-00119</span></div>
+      </div>
+      <div class="caption">Comfortable · 40 px</div>
+    </div>
+    <div>
+      <div class="tile compact">
+        <div class="rowS"><span class="dot"></span>Warehouse NE-04 <span class="id">ST-00421</span></div>
+        <div class="rowS"><span class="dot warn"></span>Lobby west <span class="id">ST-00119</span></div>
+      </div>
+      <div class="caption">Compact · 32 px</div>
+    </div>
+    <div>
+      <div class="tile" style="padding: 10px 14px">
+        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+          <div style="height: 36px; padding: 0 14px; background: var(--primary); color: var(--primary-fg); border-radius: 4px; font: 500 13px/18px var(--font-sans); display: flex; align-items: center;">Button 36 px</div>
+        </div>
+        <div>
+          <div style="height: 36px; padding: 0 10px; background: var(--surface-2); border: 1px solid var(--border-2); border-radius: 4px; color: var(--fg-2); font: 400 13px/18px var(--font-sans); display: flex; align-items: center;">Input 36 px</div>
+        </div>
+      </div>
+      <div class="caption">Controls · 36 px</div>
+    </div>
+  </div>
+</body></html>

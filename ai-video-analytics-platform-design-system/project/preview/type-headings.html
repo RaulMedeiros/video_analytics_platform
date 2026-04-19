@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px 28px; }
+  .ramp { display: grid; grid-template-columns: 70px 1fr auto; gap: 4px 20px; align-items: baseline; }
+  .ramp .label { color: var(--fg-3); font-family: var(--font-mono); font-size: 11px; padding-top: 4px; }
+  .ramp .spec  { color: var(--fg-3); font-family: var(--font-mono); font-size: 11px; white-space: nowrap; }
+  .ramp .sample { color: var(--fg-1); }
+</style></head>
+<body>
+  <div class="ramp">
+    <div class="label">h1 / 32</div>
+    <div class="sample" style="font: 600 32px/36px var(--font-sans); letter-spacing: -.01em;">Stream overview</div>
+    <div class="spec">Inter 600 · -.01em</div>
+
+    <div class="label">h2 / 24</div>
+    <div class="sample" style="font: 600 24px/28px var(--font-sans); letter-spacing: -.01em;">Active incidents</div>
+    <div class="spec">Inter 600 · -.01em</div>
+
+    <div class="label">h3 / 20</div>
+    <div class="sample" style="font: 600 20px/24px var(--font-sans);">Latency distribution</div>
+    <div class="spec">Inter 600</div>
+
+    <div class="label">h4 / 16</div>
+    <div class="sample" style="font: 600 16px/22px var(--font-sans);">Camera north-east gate</div>
+    <div class="spec">Inter 600</div>
+  </div>
+</body></html>

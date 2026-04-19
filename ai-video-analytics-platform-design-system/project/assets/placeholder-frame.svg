@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+  <defs>
+    <pattern id="dots" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="currentColor" opacity="0.18"></circle>
+    </pattern>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0"></stop>
+      <stop offset="50%" stop-color="currentColor" stop-opacity="0.08"></stop>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#dots)"></rect>
+  <rect x="0" y="120" width="640" height="120" fill="url(#scan)"></rect>
+  
+  <line x1="0" y1="180" x2="640" y2="180" stroke="currentColor" stroke-width="0.5" opacity="0.2"></line>
+  <line x1="320" y1="0" x2="320" y2="360" stroke="currentColor" stroke-width="0.5" opacity="0.2"></line>
+  
+  <g stroke="currentColor" stroke-width="1" opacity="0.35" fill="none">
+    <path d="M24 24 L24 40 M24 24 L40 24"></path>
+    <path d="M616 24 L616 40 M616 24 L600 24"></path>
+    <path d="M24 336 L24 320 M24 336 L40 336"></path>
+    <path d="M616 336 L616 320 M616 336 L600 336"></path>
+  </g>
+</svg>

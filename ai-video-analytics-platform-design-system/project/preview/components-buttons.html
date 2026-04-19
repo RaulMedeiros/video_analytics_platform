@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .lbl { width: 84px; font: 500 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+
+  .btn {
+    height: 36px; padding: 0 14px; border-radius: 4px;
+    font: 500 13px/18px var(--font-sans); color: var(--fg-1);
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+  }
+  .btn.primary { background: var(--primary); color: var(--primary-fg); }
+  .btn.primary:hover { background: var(--primary-hover); }
+  .btn.secondary { background: var(--surface-2); border-color: var(--border-2); }
+  .btn.secondary:hover { background: var(--surface-3); border-color: var(--border-strong); }
+  .btn.ghost { background: transparent; color: var(--fg-2); }
+  .btn.ghost:hover { background: var(--surface-2); color: var(--fg-1); }
+  .btn.danger { background: var(--danger); color: var(--gray-900); }
+  .btn.danger:hover { background: var(--red-500); }
+  .btn.disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn.sm { height: 28px; padding: 0 10px; font-size: 12px; border-radius: 4px; }
+  .icon-btn {
+    width: 32px; height: 32px; border-radius: 4px; background: transparent;
+    border: 1px solid var(--border-1); color: var(--fg-2);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .icon-btn:hover { background: var(--surface-2); color: var(--fg-1); border-color: var(--border-2); }
+</style></head>
+<body>
+  <div class="row"><div class="lbl">Primary</div>
+    <button class="btn primary">Start stream</button>
+    <button class="btn primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Play</button>
+    <button class="btn primary sm">Save</button>
+  </div>
+  <div class="row"><div class="lbl">Secondary</div>
+    <button class="btn secondary">Cancel</button>
+    <button class="btn secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export</button>
+    <button class="btn ghost">Reset filters</button>
+  </div>
+  <div class="row"><div class="lbl">Destructive</div>
+    <button class="btn danger">Delete stream</button>
+    <button class="btn secondary" style="color: var(--danger); border-color: var(--danger-subtle)">Acknowledge</button>
+    <button class="btn primary disabled">Disabled</button>
+  </div>
+  <div class="row"><div class="lbl">Icon</div>
+    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></button>
+    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  </div>
+</body></html>

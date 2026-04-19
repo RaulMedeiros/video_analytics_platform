@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+  .chip {
+    height: 22px; padding: 0 8px; border-radius: 4px;
+    font: 600 11px/14px var(--font-sans); letter-spacing: .06em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .chip .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  .chip.live    { background: var(--live-subtle); color: var(--live); }
+  .chip.offline { background: var(--surface-2); color: var(--fg-3); border: 1px solid var(--border-1); }
+  .chip.degraded{ background: var(--warning-subtle); color: var(--warning); }
+  .chip.error   { background: var(--danger-subtle); color: var(--danger); }
+  .chip.paused  { background: var(--surface-2); color: var(--fg-2); border: 1px solid var(--border-2); }
+  .chip.success { background: var(--success-subtle); color: var(--success); }
+  .chip.info    { background: var(--info-subtle); color: var(--info); }
+
+  @keyframes livePulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  .chip.live .dot { background: var(--live); animation: livePulse 2s ease-in-out infinite; }
+  .chip.offline .dot { background: var(--fg-3); }
+  .chip.degraded .dot { background: var(--warning); }
+  .chip.error .dot { background: var(--danger); }
+  .chip.paused .dot { background: var(--fg-2); }
+  .chip.success .dot { background: var(--success); }
+
+  .standalone-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
+</style></head>
+<body>
+  <div class="title">Status chips · stream state</div>
+  <div class="row">
+    <div class="chip live"><div class="dot"></div>Live</div>
+    <div class="chip degraded"><div class="dot"></div>Degraded</div>
+    <div class="chip error"><div class="dot"></div>Disconnected</div>
+    <div class="chip paused"><div class="dot"></div>Paused</div>
+    <div class="chip offline"><div class="dot"></div>Offline</div>
+  </div>
+
+  <div class="title" style="margin-top: 6px">Severity / outcome</div>
+  <div class="row">
+    <div class="chip error"><div class="dot"></div>Critical</div>
+    <div class="chip degraded"><div class="dot"></div>Warning</div>
+    <div class="chip info"><div class="dot"></div>Info</div>
+    <div class="chip success"><div class="dot"></div>Resolved</div>
+  </div>
+
+  <div class="title" style="margin-top: 6px">Bare status dots · dense tables</div>
+  <div class="row" style="font: 400 13px/18px var(--font-sans); color: var(--fg-1);">
+    <span><span class="standalone-dot" style="background: var(--live)"></span>Warehouse NE-04</span>
+    <span><span class="standalone-dot" style="background: var(--warning)"></span>Lobby west</span>
+    <span><span class="standalone-dot" style="background: var(--danger)"></span>Server room A</span>
+    <span><span class="standalone-dot" style="background: var(--fg-3)"></span>Test camera 03</span>
+  </div>
+</body></html>

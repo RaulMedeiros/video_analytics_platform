@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .stream-card {
+    background: var(--surface-1); border: 1px solid var(--border-1);
+    border-radius: 8px; overflow: hidden;
+    transition: border-color var(--dur-small) var(--ease-out);
+  }
+  .stream-card:hover { border-color: var(--border-2); }
+
+  .frame {
+    position: relative; aspect-ratio: 16 / 9; background: #0a1018;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(96,165,250,0.08) 0, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(16,185,129,0.06) 0, transparent 35%);
+  }
+  .frame.offline { background: var(--surface-2); }
+  .frame::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1.5px);
+    background-size: 10px 10px;
+  }
+  .frame-top {
+    position: absolute; top: 0; left: 0; right: 0; padding: 10px 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    pointer-events: none;
+  }
+  .frame-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    display: flex; justify-content: space-between; align-items: flex-end;
+    color: #fff;
+  }
+  .live-chip {
+    height: 22px; padding: 0 8px; border-radius: 4px;
+    font: 600 11px/14px var(--font-sans); letter-spacing: .06em; text-transform: uppercase;
+    background: rgba(16,185,129,0.22); color: #a7f3d0;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  @keyframes livePulse { 0%,100% { opacity: .5 } 50% { opacity: 1 } }
+  .live-chip .d { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: livePulse 2s ease-in-out infinite; }
+
+  .frame-label { font: 500 13px/18px var(--font-sans); }
+  .frame-meta  { font: 400 11px/14px var(--font-mono); opacity: 0.8; }
+
+  .overlay-box {
+    position: absolute; border: 1.5px solid #60a5fa;
+    background: rgba(96,165,250,0.10);
+    border-radius: 2px;
+  }
+  .overlay-box::after {
+    content: attr(data-label);
+    position: absolute; top: -18px; left: -1px;
+    background: #60a5fa; color: #0b0f14;
+    font: 600 10px/14px var(--font-sans); letter-spacing: .04em;
+    padding: 0 4px; border-radius: 2px 2px 0 0;
+  }
+
+  .meta {
+    padding: 12px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
+  }
+  .meta-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .meta-name { font: 600 14px/18px var(--font-sans); color: var(--fg-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meta-id   { font: 400 11px/14px var(--font-mono); color: var(--fg-3); }
+  .meta-right { display: flex; gap: 14px; font-variant-numeric: tabular-nums; }
+  .stat { display: flex; flex-direction: column; align-items: flex-end; }
+  .stat-val { font: 600 13px/16px var(--font-sans); color: var(--fg-1); }
+  .stat-lbl { font: 500 10px/12px var(--font-sans); color: var(--fg-3); letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+
+  .chip-warn {
+    height: 22px; padding: 0 8px; border-radius: 4px;
+    font: 600 11px/14px var(--font-sans); letter-spacing: .06em; text-transform: uppercase;
+    background: rgba(251,191,36,0.22); color: #fde68a;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .chip-warn .d { width: 6px; height: 6px; border-radius: 50%; background: var(--warning); }
+</style></head>
+<body>
+  <!-- Live stream card -->
+  <div class="stream-card">
+    <div class="frame">
+      <div class="overlay-box" style="top: 36%; left: 22%; width: 18%; height: 38%" data-label="person · 94%"></div>
+      <div class="overlay-box" style="top: 44%; left: 58%; width: 14%; height: 28%" data-label="person · 88%"></div>
+      <div class="frame-top">
+        <div class="live-chip"><div class="d"></div>Live</div>
+        <div style="color: #fff; font: 400 11px/14px var(--font-mono); opacity: .8">14:32:08</div>
+      </div>
+      <div class="frame-bottom">
+        <div>
+          <div class="frame-label">Warehouse NE-04 · aisle cam</div>
+          <div class="frame-meta">1080p · 24 fps · 32 ms</div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="meta-left">
+        <div class="meta-name">Warehouse NE-04 · aisle cam</div>
+        <div class="meta-id">ST-00421 · us-east-1</div>
+      </div>
+      <div class="meta-right">
+        <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">persons</div></div>
+        <div class="stat"><div class="stat-val">32<span style="color: var(--fg-3); font-weight: 400; margin-left: 2px">ms</span></div><div class="stat-lbl">latency</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Degraded stream card -->
+  <div class="stream-card">
+    <div class="frame">
+      <div class="frame-top">
+        <div class="chip-warn"><div class="d"></div>Degraded</div>
+        <div style="color: #fff; font: 400 11px/14px var(--font-mono); opacity: .6">buffering…</div>
+      </div>
+      <div class="frame-bottom">
+        <div>
+          <div class="frame-label">Lobby west · entrance</div>
+          <div class="frame-meta">720p · 12 fps · 480 ms</div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="meta-left">
+        <div class="meta-name">Lobby west · entrance</div>
+        <div class="meta-id">ST-00119 · us-east-1</div>
+      </div>
+      <div class="meta-right">
+        <div class="stat"><div class="stat-val" style="color: var(--warning)">12</div><div class="stat-lbl">fps</div></div>
+        <div class="stat"><div class="stat-val" style="color: var(--warning)">480<span style="color: var(--fg-3); font-weight: 400; margin-left: 2px">ms</span></div><div class="stat-lbl">latency</div></div>
+      </div>
+    </div>
+  </div>
+</body></html>

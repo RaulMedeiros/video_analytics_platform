@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 20px 24px; }
+  .table { background: var(--surface-1); border: 1px solid var(--border-1); border-radius: 8px; overflow: hidden; }
+  .thead {
+    display: grid;
+    grid-template-columns: 24px 2fr 1fr 1fr 1fr 100px;
+    align-items: center; gap: 14px;
+    padding: 10px 16px;
+    font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2);
+    border-bottom: 1px solid var(--border-1);
+    background: var(--surface-1);
+  }
+  .tr {
+    display: grid;
+    grid-template-columns: 24px 2fr 1fr 1fr 1fr 100px;
+    align-items: center; gap: 14px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-1);
+    font-variant-numeric: tabular-nums;
+    font: 400 13px/18px var(--font-sans); color: var(--fg-1);
+  }
+  .tr:last-child { border-bottom: none; }
+  .tr:hover { background: var(--surface-2); cursor: pointer; }
+  .tr.selected { background: var(--primary-subtle); box-shadow: inset 2px 0 0 var(--primary); }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .name { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .name-main { color: var(--fg-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .name-sub  { font: 400 11px/14px var(--font-mono); color: var(--fg-3); }
+  .num { color: var(--fg-1); }
+  .num .unit { color: var(--fg-3); margin-left: 2px; }
+  .muted { color: var(--fg-2); }
+
+  .chip {
+    height: 20px; padding: 0 7px; border-radius: 4px;
+    font: 600 10px/14px var(--font-sans); letter-spacing: .06em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .chip .d { width: 5px; height: 5px; border-radius: 50%; }
+  .chip.live { background: var(--live-subtle); color: var(--live); }
+  .chip.live .d { background: var(--live); }
+  .chip.warn { background: var(--warning-subtle); color: var(--warning); }
+  .chip.warn .d { background: var(--warning); }
+  .chip.err  { background: var(--danger-subtle); color: var(--danger); }
+  .chip.err .d { background: var(--danger); }
+</style></head>
+<body>
+  <div class="table">
+    <div class="thead">
+      <div></div>
+      <div>Stream</div>
+      <div>Status</div>
+      <div>Throughput</div>
+      <div>Latency</div>
+      <div>Region</div>
+    </div>
+    <div class="tr">
+      <div><div class="dot" style="background: var(--live)"></div></div>
+      <div class="name">
+        <div class="name-main">Warehouse NE-04 · aisle cam</div>
+        <div class="name-sub">ST-00421</div>
+      </div>
+      <div><div class="chip live"><div class="d"></div>Live</div></div>
+      <div class="num">24.0<span class="unit">fps</span></div>
+      <div class="num">32<span class="unit">ms</span></div>
+      <div class="muted">us-east-1</div>
+    </div>
+    <div class="tr selected">
+      <div><div class="dot" style="background: var(--warning)"></div></div>
+      <div class="name">
+        <div class="name-main">Lobby west · entrance</div>
+        <div class="name-sub">ST-00119</div>
+      </div>
+      <div><div class="chip warn"><div class="d"></div>Degraded</div></div>
+      <div class="num" style="color: var(--warning)">12.1<span class="unit">fps</span></div>
+      <div class="num" style="color: var(--warning)">480<span class="unit">ms</span></div>
+      <div class="muted">us-east-1</div>
+    </div>
+    <div class="tr">
+      <div><div class="dot" style="background: var(--danger)"></div></div>
+      <div class="name">
+        <div class="name-main">Server room A · rack 12</div>
+        <div class="name-sub">ST-00873</div>
+      </div>
+      <div><div class="chip err"><div class="d"></div>Offline</div></div>
+      <div class="num muted">—</div>
+      <div class="num muted">—</div>
+      <div class="muted">eu-west-1</div>
+    </div>
+  </div>
+</body></html>

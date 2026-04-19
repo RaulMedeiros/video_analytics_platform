@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>Aperture · Dashboard UI kit</title>
+  <meta name="viewport" content="width=1440">
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <link rel="stylesheet" href="dashboard.css">
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<template id="__bundler_thumbnail" data-bg-color="#0b0f14">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0b0f14"/>
+    <g transform="translate(600 400)" fill="none" stroke="#60a5fa">
+      <circle r="180" stroke-width="10"/>
+      <circle r="70" fill="#60a5fa"/>
+      <polygon points="0,-180 70,-100 -70,-100" fill="#60a5fa" opacity="0.9"/>
+      <polygon points="0,180 -70,100 70,100" fill="#60a5fa" opacity="0.9"/>
+      <polygon points="-180,0 -100,-70 -100,70" fill="#60a5fa" opacity="0.9"/>
+      <polygon points="180,0 100,70 100,-70" fill="#60a5fa" opacity="0.9"/>
+      <line x1="-240" y1="0" x2="240" y2="0" stroke="#60a5fa" stroke-width="2" opacity="0.4"/>
+    </g>
+    <text x="600" y="680" text-anchor="middle" fill="#e6e9ee" font-family="Inter, sans-serif" font-size="42" font-weight="600" letter-spacing="-0.5">Aperture Analytics</text>
+    <text x="600" y="720" text-anchor="middle" fill="#737a86" font-family="Inter, sans-serif" font-size="18" letter-spacing="2" style="text-transform: uppercase;">Loading dashboard…</text>
+  </svg>
+</template>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="page.jsx"></script>
+</body>
+</html>

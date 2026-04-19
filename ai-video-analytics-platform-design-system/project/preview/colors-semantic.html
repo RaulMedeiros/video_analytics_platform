@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px; }
+  .title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 52px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font: 600 12px/16px var(--font-sans); }
+  .subtle { border: 1px solid var(--border-1); }
+  .name { font: 500 12px/16px var(--font-sans); color: var(--fg-1); }
+  .hex  { font: 400 11px/14px var(--font-mono); color: var(--fg-3); }
+</style></head>
+<body>
+  <div class="title">Semantic states</div>
+  <div class="grid">
+    <div class="swatch">
+      <div class="chip" style="background: var(--success); color: var(--gray-900)">success</div>
+      <div class="name">success</div><div class="hex">#4ade80</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background: var(--warning); color: var(--gray-900)">warning</div>
+      <div class="name">warning</div><div class="hex">#fbbf24</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background: var(--danger); color: var(--gray-900)">danger</div>
+      <div class="name">danger</div><div class="hex">#f87171</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background: var(--info); color: var(--gray-900)">info</div>
+      <div class="name">info</div><div class="hex">#60a5fa</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background: var(--live); color: #fff">live</div>
+      <div class="name">live</div><div class="hex">#10b981</div>
+    </div>
+
+    <div class="swatch">
+      <div class="chip subtle" style="background: var(--success-subtle); color: var(--success)">success-subtle</div>
+      <div class="name">success / subtle</div><div class="hex">12% α</div>
+    </div>
+    <div class="swatch">
+      <div class="chip subtle" style="background: var(--warning-subtle); color: var(--warning)">warning-subtle</div>
+      <div class="name">warning / subtle</div><div class="hex">14% α</div>
+    </div>
+    <div class="swatch">
+      <div class="chip subtle" style="background: var(--danger-subtle); color: var(--danger)">danger-subtle</div>
+      <div class="name">danger / subtle</div><div class="hex">14% α</div>
+    </div>
+    <div class="swatch">
+      <div class="chip subtle" style="background: var(--info-subtle); color: var(--info)">info-subtle</div>
+      <div class="name">info / subtle</div><div class="hex">12% α</div>
+    </div>
+    <div class="swatch">
+      <div class="chip subtle" style="background: var(--live-subtle); color: var(--live)">live-subtle</div>
+      <div class="name">live / subtle</div><div class="hex">16% α</div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 28px; }
+  .title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: 6px; }
+  .name { font: 500 12px/16px var(--font-sans); color: var(--fg-1); }
+  .hex  { font: 400 11px/14px var(--font-mono); color: var(--fg-3); }
+</style></head>
+<body>
+  <div class="title">Primary · Blue</div>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background: #dbeafe"></div><div class="name">blue / 100</div><div class="hex">#dbeafe</div></div>
+    <div class="swatch"><div class="chip" style="background: #93c5fd"></div><div class="name">blue / 300</div><div class="hex">#93c5fd</div></div>
+    <div class="swatch"><div class="chip" style="background: #60a5fa; outline: 2px solid var(--primary); outline-offset: 2px"></div><div class="name">primary · 400</div><div class="hex">#60a5fa</div></div>
+    <div class="swatch"><div class="chip" style="background: #3b82f6"></div><div class="name">blue / 500</div><div class="hex">#3b82f6</div></div>
+    <div class="swatch"><div class="chip" style="background: #1d4ed8"></div><div class="name">blue / 700</div><div class="hex">#1d4ed8</div></div>
+  </div>
+</body></html>

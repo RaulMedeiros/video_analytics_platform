@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 20px 24px; }
+  .card { background: var(--surface-1); border: 1px solid var(--border-1); border-radius: 8px; overflow: hidden; }
+  .row-title { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); padding: 0 16px 10px; }
+
+  .alert {
+    display: grid;
+    grid-template-columns: 4px 24px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-1);
+    font-variant-numeric: tabular-nums;
+  }
+  .alert:last-child { border-bottom: none; }
+  .alert:hover { background: var(--surface-2); }
+  .accent { align-self: stretch; border-radius: 2px; }
+  .accent.critical { background: var(--danger); }
+  .accent.warning  { background: var(--warning); }
+  .accent.info     { background: var(--info); }
+
+  .icon-wrap {
+    width: 28px; height: 28px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-wrap.critical { background: var(--danger-subtle); color: var(--danger); }
+  .icon-wrap.warning  { background: var(--warning-subtle); color: var(--warning); }
+  .icon-wrap.info     { background: var(--info-subtle); color: var(--info); }
+
+  .body-col { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .title { font: 500 14px/18px var(--font-sans); color: var(--fg-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meta  { font: 400 12px/16px var(--font-sans); color: var(--fg-3); }
+  .meta .mono { font-family: var(--font-mono); color: var(--fg-2); }
+
+  .timestamp { font: 400 12px/16px var(--font-mono); color: var(--fg-3); }
+
+  .action {
+    height: 28px; padding: 0 10px; border-radius: 4px;
+    background: transparent; border: 1px solid var(--border-2); color: var(--fg-1);
+    font: 500 12px/16px var(--font-sans);
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  }
+  .action:hover { background: var(--surface-3); border-color: var(--border-strong); }
+</style></head>
+<body>
+  <div class="card">
+    <div style="padding: 14px 16px 0"><div class="row-title" style="padding: 0">Active alerts · 3</div></div>
+    <div class="alert">
+      <div class="accent critical"></div>
+      <div class="icon-wrap critical">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="body-col">
+        <div class="title">Unauthorized entry detected</div>
+        <div class="meta">Warehouse NE-04 · <span class="mono">ST-00421</span> · zone C</div>
+      </div>
+      <div class="timestamp">14:31:52</div>
+      <button class="action">Acknowledge</button>
+    </div>
+    <div class="alert">
+      <div class="accent warning"></div>
+      <div class="icon-wrap warning">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="body-col">
+        <div class="title">Frame rate dropped below threshold</div>
+        <div class="meta">Lobby west · <span class="mono">ST-00119</span> · 12 fps vs 24 target</div>
+      </div>
+      <div class="timestamp">14:28:04</div>
+      <button class="action">Acknowledge</button>
+    </div>
+    <div class="alert">
+      <div class="accent info"></div>
+      <div class="icon-wrap info">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </div>
+      <div class="body-col">
+        <div class="title">Model v2.4.1 deployed to inference pool</div>
+        <div class="meta">Global · rollout 42% complete</div>
+      </div>
+      <div class="timestamp">14:12:18</div>
+      <button class="action">View</button>
+    </div>
+  </div>
+</body></html>

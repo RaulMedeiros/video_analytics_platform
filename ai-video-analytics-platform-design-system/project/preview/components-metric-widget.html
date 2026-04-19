@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .widget {
+    background: var(--surface-1); border: 1px solid var(--border-1);
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .eyebrow-row { display: flex; justify-content: space-between; align-items: center; }
+  .eyebrow { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+  .help { color: var(--fg-3); }
+  .metric-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .big { font: 600 32px/36px var(--font-sans); letter-spacing: -.02em; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+  .unit { font-weight: 400; color: var(--fg-3); font-size: .55em; margin-left: 4px; }
+  .delta { font: 500 12px/16px var(--font-sans); display: inline-flex; align-items: center; gap: 4px; }
+  .delta.up { color: var(--success); }
+  .delta.dn { color: var(--danger); }
+
+  /* sparkline */
+  .spark { width: 100%; height: 32px; }
+  .spark path { fill: none; stroke-width: 1.5; }
+
+  /* progress */
+  .progress-track { height: 6px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--primary); border-radius: 999px; }
+
+  .legend-row { display: flex; gap: 14px; font: 500 11px/14px var(--font-mono); color: var(--fg-3); }
+  .legend-row span.v { color: var(--fg-1); font: 500 13px/16px var(--font-sans); font-variant-numeric: tabular-nums; margin-right: 4px; }
+</style></head>
+<body>
+  <div class="widget">
+    <div class="eyebrow-row">
+      <div class="eyebrow">Active streams</div>
+      <svg class="help" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    </div>
+    <div class="metric-row">
+      <div class="big">1,247</div>
+      <div class="delta up">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>
+        +12 · 1h
+      </div>
+    </div>
+    <svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none">
+      <path stroke="var(--primary)" d="M0,24 L20,22 L40,18 L60,20 L80,14 L100,16 L120,10 L140,12 L160,8 L180,6 L200,4"/>
+    </svg>
+  </div>
+
+  <div class="widget">
+    <div class="eyebrow-row">
+      <div class="eyebrow">P95 latency</div>
+      <div class="eyebrow" style="color: var(--warning); letter-spacing: .04em; text-transform: none; font-weight: 500; font-size: 12px">over target</div>
+    </div>
+    <div class="metric-row">
+      <div class="big">184<span class="unit">ms</span></div>
+      <div class="delta dn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        +23 ms
+      </div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%; background: var(--warning)"></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; font: 500 11px/14px var(--font-mono); color: var(--fg-3);">
+      <span>target 200 ms</span><span>ceiling 500 ms</span>
+    </div>
+  </div>
+</body></html>

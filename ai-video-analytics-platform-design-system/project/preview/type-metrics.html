@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: end; }
+  .metric-block { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow { font: 600 11px/14px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+  .big { font: 600 40px/44px var(--font-sans); letter-spacing: -.02em; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+  .mid { font: 600 28px/32px var(--font-sans); letter-spacing: -.01em; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+  .unit { color: var(--fg-3); font-weight: 400; font-size: .6em; margin-left: 4px; }
+  .delta-up { color: var(--success); font: 500 12px/16px var(--font-sans); }
+  .delta-dn { color: var(--danger); font: 500 12px/16px var(--font-sans); }
+</style></head>
+<body>
+  <div class="metric-block">
+    <div class="eyebrow">Active streams</div>
+    <div class="big">1,247</div>
+    <div class="delta-up">+12 in last hour</div>
+  </div>
+  <div class="metric-block">
+    <div class="eyebrow">P95 latency</div>
+    <div class="big">184<span class="unit">ms</span></div>
+    <div class="delta-dn">+23 ms vs. 1h avg</div>
+  </div>
+  <div class="metric-block">
+    <div class="eyebrow">Inference throughput</div>
+    <div class="mid">42.8k<span class="unit">fps</span></div>
+    <div class="delta-up">Stable</div>
+  </div>
+</body></html>
