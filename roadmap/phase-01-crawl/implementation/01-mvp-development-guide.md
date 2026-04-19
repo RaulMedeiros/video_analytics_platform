@@ -29,10 +29,10 @@ This document defines the **complete technical project structure** for Phase 1 i
 ### **Phase 1 Technology Stack**
 | **Layer** | **Technology** | **Rationale** |
 |-----------|----------------|---------------|
-| **Frontend** | React 18 + TypeScript | Modern, well-supported, extensive ecosystem |
-| **Backend** | Node.js 20 + Express | JavaScript ecosystem, rapid development |
+| **Frontend** | React + Next.js + TypeScript + shadcn/ui + Tailwind CSS | Modern, well-supported, extensive ecosystem |
+| **Backend** | Go 1.22+ + Gin | High-throughput services, low GC pressure, static binaries |
 | **Database** | PostgreSQL 15 + Redis 7 | Reliable RDBMS + high-performance caching |
-| **AI/ML** | TensorFlow.js + OpenCV | Browser-compatible ML, proven computer vision |
+| **AI/ML** | Python 3.12+ + PyTorch + ONNX Runtime + OpenCV | Deep learning, model serving, proven computer vision |
 | **Containers** | Docker + Docker Compose | Simple orchestration, production-ready |
 | **Monitoring** | Prometheus + Grafana | Industry-standard monitoring stack |
 
@@ -166,36 +166,31 @@ backend/
 ```yaml
 BACKEND_DEPENDENCIES:
   Core_Framework:
-    express: "^4.18.2"
-    typescript: "^5.2.2"
-    ts-node: "^10.9.1"
-    nodemon: "^3.0.1"
+    go: "1.22+"
+    gin: "^1.9.0"           # HTTP web framework for Go
+    viper: "^1.16.0"        # Configuration management
 
-  Database_ORM:
-    pg: "^8.11.3"           # PostgreSQL client
-    redis: "^4.6.8"         # Redis client
-    typeorm: "^0.3.17"      # ORM for TypeScript
+  Database:
+    pgx: "^5.4.0"           # PostgreSQL driver for Go
+    go-redis: "^9.0.0"      # Redis client for Go
+    sqlc: "^1.20.0"         # Type-safe SQL for Go
 
   Authentication_Security:
-    jsonwebtoken: "^9.0.2"  # JWT tokens
-    bcryptjs: "^2.4.3"      # Password hashing
-    helmet: "^7.0.0"        # Security headers
-    cors: "^2.8.5"          # Cross-origin requests
+    golang-jwt: "^5.0.0"    # JWT tokens
+    bcrypt: "built-in"      # Password hashing (golang.org/x/crypto)
+    cors: "^1.5.0"          # Cross-origin requests (gin-contrib/cors)
 
   Validation_Utils:
-    joi: "^17.9.2"          # Request validation
-    express-rate-limit: "^6.10.0"  # Rate limiting
-    express-validator: "^7.0.1"    # Input validation
+    validator: "^10.15.0"   # Request validation
+    go-rate-limit: "^1.0.0" # Rate limiting
 
   Monitoring_Logging:
-    winston: "^3.10.0"      # Logging framework
-    prom-client: "^14.2.0"  # Prometheus metrics
-    morgan: "^1.10.0"       # HTTP request logging
+    zap: "^1.26.0"          # Structured logging framework
+    prometheus/client_golang: "^1.17.0"  # Prometheus metrics
 
   Testing:
-    jest: "^29.6.4"         # Testing framework
-    supertest: "^6.3.3"     # HTTP testing
-    @types/jest: "^29.5.5"  # Jest TypeScript types
+    testify: "^1.8.4"       # Testing framework for Go
+    httptest: "built-in"    # HTTP testing (net/http/httptest)
 ```
 
 ---
@@ -411,24 +406,25 @@ ai-service/
 ```yaml
 AI_ML_DEPENDENCIES:
   Core_Processing:
-    tensorflow: "^4.10.0"           # TensorFlow.js for ML
-    opencv4nodejs: "^5.6.0"        # OpenCV for computer vision
-    sharp: "^0.32.5"               # High-performance image processing
-    fluent-ffmpeg: "^2.1.2"        # Video processing
+    torch: "^2.1.0"                # PyTorch for deep learning
+    onnxruntime: "^1.16.0"         # ONNX Runtime for model inference
+    opencv-python: "^4.8.0"        # OpenCV for computer vision
+    numpy: "^1.26.0"               # Numerical computing
+    Pillow: "^10.0.0"              # Image processing
 
   Model_Management:
-    @tensorflow/tfjs-node: "^4.10.0"  # TensorFlow Node.js backend
-    @tensorflow/tfjs-converter: "^4.10.0" # Model conversion
+    ultralytics: "^8.0.0"          # YOLO model integration
+    onnx: "^1.14.0"                # ONNX model export and conversion
 
   Performance_Optimization:
-    worker_threads: "Built-in"      # Multi-threading support
-    cluster: "Built-in"             # Process clustering
-    bull: "^4.11.3"                # Job queue management
+    multiprocessing: "built-in"    # Multi-processing support
+    asyncio: "built-in"            # Async processing
+    redis-py: "^5.0.0"             # Redis Streams job queue
 
   API_Communication:
-    express: "^4.18.2"             # REST API framework
-    socket.io: "^4.7.2"            # WebSocket communication
-    axios: "^1.5.0"                # HTTP client for backend communication
+    fastapi: "^0.103.0"            # REST API framework (Python)
+    websockets: "^11.0.0"          # WebSocket communication
+    httpx: "^0.25.0"               # HTTP client for backend communication
 ```
 
 ---
@@ -510,11 +506,10 @@ services:
     ports:
       - "3002:3002"
     environment:
-      NODE_ENV: development
+      APP_ENV: development
       BACKEND_URL: http://backend:3001
     volumes:
       - ./ai-service:/app
-      - /app/node_modules
       - ./ai-service/models:/app/models
     depends_on:
       backend:
@@ -592,35 +587,32 @@ networks:
 #### **Backend Dockerfile**
 ```dockerfile
 # backend/Dockerfile
-FROM node:20-alpine AS base
+FROM golang:1.22-alpine AS base
 
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json ./
-RUN npm ci --only=production
+COPY go.mod go.sum ./
+RUN go mod download
 
 # Development stage
 FROM base AS development
-RUN npm ci
 COPY . .
 EXPOSE 3001
-CMD ["npm", "run", "dev"]
+CMD ["go", "run", "./cmd/server"]
 
 # Production build stage
 FROM base AS build
 COPY . .
-RUN npm run build
+RUN go build -o /app/server ./cmd/server
 
 # Production stage
-FROM node:20-alpine AS production
+FROM alpine:3.19 AS production
 WORKDIR /app
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
-COPY package*.json ./
+COPY --from=build /app/server ./server
 EXPOSE 3001
-USER node
-CMD ["npm", "start"]
+USER nobody
+CMD ["./server"]
 ```
 
 #### **Frontend Dockerfile**
@@ -631,26 +623,28 @@ FROM node:20-alpine AS base
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
 
 # Development stage
 FROM base AS development
 COPY . .
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+CMD ["pnpm", "dev"]
 
 # Production build stage
 FROM base AS build
 COPY . .
-RUN npm run build
+RUN pnpm build
 
 # Production stage
-FROM nginx:alpine AS production
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY config/nginx/prod.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:20-alpine AS production
+WORKDIR /app
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
+EXPOSE 3000
+CMD ["node", "server.js"]
 ```
 
 ---
@@ -670,27 +664,27 @@ CMD ["nginx", "-g", "daemon off;"]
     "dev:clean": "docker-compose down -v --remove-orphans",
 
     "build": "./scripts/build.sh",
-    "build:backend": "cd backend && npm run build",
-    "build:frontend": "cd frontend && npm run build",
-    "build:ai": "cd ai-service && npm run build",
+    "build:backend": "cd backend && go build ./...",
+    "build:frontend": "cd frontend && pnpm build",
+    "build:ai": "cd ai-service && uv run python -m build",
 
     "test": "./scripts/test.sh",
-    "test:backend": "cd backend && npm test",
-    "test:frontend": "cd frontend && npm test",
-    "test:ai": "cd ai-service && npm test",
-    "test:e2e": "cd tests && npm run e2e",
+    "test:backend": "cd backend && go test ./...",
+    "test:frontend": "cd frontend && pnpm test",
+    "test:ai": "cd ai-service && uv run pytest",
+    "test:e2e": "cd tests && pnpm run e2e",
 
     "lint": "npm run lint:backend && npm run lint:frontend",
-    "lint:backend": "cd backend && npm run lint",
-    "lint:frontend": "cd frontend && npm run lint",
-    "lint:fix": "npm run lint:backend -- --fix && npm run lint:frontend -- --fix",
+    "lint:backend": "cd backend && golangci-lint run",
+    "lint:frontend": "cd frontend && pnpm lint",
+    "lint:fix": "npm run lint:frontend -- --fix",
 
     "deploy:staging": "./scripts/deploy.sh staging",
     "deploy:production": "./scripts/deploy.sh production",
 
-    "db:migrate": "cd backend && npm run migrate",
-    "db:seed": "cd backend && npm run seed",
-    "db:reset": "cd backend && npm run db:reset"
+    "db:migrate": "cd backend && go run ./cmd/migrate",
+    "db:seed": "cd backend && go run ./cmd/seed",
+    "db:reset": "cd backend && go run ./cmd/migrate -- --reset"
   }
 }
 ```
@@ -706,14 +700,16 @@ echo "🚀 Setting up Video Analytics Platform development environment..."
 echo "📋 Checking prerequisites..."
 command -v docker >/dev/null 2>&1 || { echo "❌ Docker is required but not installed. Aborting." >&2; exit 1; }
 command -v docker-compose >/dev/null 2>&1 || { echo "❌ Docker Compose is required but not installed. Aborting." >&2; exit 1; }
+command -v go >/dev/null 2>&1 || { echo "❌ Go is required but not installed. Aborting." >&2; exit 1; }
+command -v python3 >/dev/null 2>&1 || { echo "❌ Python 3 is required but not installed. Aborting." >&2; exit 1; }
 command -v node >/dev/null 2>&1 || { echo "❌ Node.js is required but not installed. Aborting." >&2; exit 1; }
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-cd backend && npm install && cd ..
-cd frontend && npm install && cd ..
-cd ai-service && npm install && cd ..
-cd tests && npm install && cd ..
+cd backend && go mod download && cd ..
+cd frontend && pnpm install && cd ..
+cd ai-service && uv sync && cd ..
+cd tests && pnpm install && cd ..
 
 # Copy environment files
 echo "⚙️ Setting up environment files..."
@@ -732,7 +728,7 @@ mkdir -p config/ssl
 # Download pre-trained models
 echo "🤖 Downloading AI models..."
 cd ai-service
-npm run download-models
+uv run python scripts/download_models.py
 cd ..
 
 # Initialize database
@@ -1068,7 +1064,7 @@ services:
       dockerfile: Dockerfile
       target: production
     environment:
-      NODE_ENV: production
+      APP_ENV: production
       BACKEND_URL: http://backend:3001
     volumes:
       - ai_models:/app/models

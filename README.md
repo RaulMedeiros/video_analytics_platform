@@ -1,9 +1,9 @@
 # AI Video Analytics Platform
 ## Progressive Enterprise Implementation Strategy
 
-[![Documentation Status](https://img.shields.io/badge/docs-latest-brightgreen.svg)](./docs/navigation-index.md)
-[![Architecture](https://img.shields.io/badge/architecture-risk_mitigated-blue.svg)](./docs/architecture/00_master_architecture.md)
-[![Risk Status](https://img.shields.io/badge/risk_level-low_medium-green.svg)](./docs/business-case/analysis/02-risk-mitigation-matrix.md)
+[![Documentation Status](https://img.shields.io/badge/docs-latest-brightgreen.svg)](./roadmap/progressive_implementation_roadmap.md)
+[![Architecture](https://img.shields.io/badge/architecture-risk_mitigated-blue.svg)](./roadmap/phase-01-crawl/architecture/README.md)
+[![Risk Status](https://img.shields.io/badge/risk_level-low_medium-green.svg)](./project-overview/02-system-overview.md)
 [![License](https://img.shields.io/badge/license-Enterprise-yellow.svg)]()
 
 ---
@@ -38,63 +38,45 @@ Welcome to the comprehensive documentation hub for the AI Video Analytics Platfo
 ### **📋 Quick Start Navigation**
 | **Audience** | **Starting Point** | **Reading Time** | **Purpose** |
 |--------------|-------------------|------------------|--------------|
-| **👔 Executives** | [Vision & Strategy](./docs/project-overview/vision/01-vision-mission-strategy.md) | 8 min | Strategic foundation |
-| **🏗️ Solution Architects** | [Progressive Strategy](./docs/project-overview/strategy/01-progressive-implementation-strategy.md) | 12 min | Implementation approach |
+| **👔 Executives** | [Vision & Strategy](./project-overview/01-vision-and-strategy.md) | 8 min | Strategic foundation |
+| **🏗️ Solution Architects** | [Progressive Strategy](./project-overview/03-implementation-approach.md) | 12 min | Implementation approach |
 | **👨‍💻 Developers** | [MVP Development Guide](./roadmap/phase-01-crawl/implementation/01-mvp-development-guide.md) | 25 min | Development guidance |
 | **⚙️ Operations Teams** | [Change Management](./roadmap/phase-01-crawl/operations/01-change-management.md) | 15 min | User adoption strategy |
 
 ### **🧭 Complete Navigation Index**
-**[📖 Master Navigation Index](./docs/navigation-index.md)** - Detailed cross-reference guide with role-based pathways
-
-### 🚀 **Quick Start by Audience** (Recommended Entry Points)
-| Audience | Starting Point | Reading Time | Purpose |
-|----------|---------------|--------------|---------|
-| **👔 Executives** | [Vision & Strategy](./docs/project-overview/vision/01-vision-mission-strategy.md) | 8 min | Strategic foundation & business case |
-| **🏗️ Solution Architects** | [Progressive Strategy](./docs/project-overview/strategy/01-progressive-implementation-strategy.md) | 12 min | Implementation approach & architecture |
-| **👨‍💻 Developers** | [MVP Development Guide](./roadmap/phase-01-crawl/implementation/01-mvp-development-guide.md) | 25 min | Complete development guidance |
-| **⚙️ Operations Teams** | [Change Management](./roadmap/phase-01-crawl/operations/01-change-management.md) | 15 min | User adoption & support strategy |
+**[📖 Master Navigation Index](./roadmap/progressive_implementation_roadmap.md)** - Detailed cross-reference guide with role-based pathways
 
 ---
 
 ## 🏗️ **Core Architecture Documentation**
 
 ### **🎯 Master Architecture Hub**
-- **[🏛️ Master Architecture Document](./docs/architecture/00_master_architecture.md)** - Complete enterprise architecture overview
-- **[🔗 Integration Patterns](./docs/architecture/01_integration_patterns.md)** - Module communication strategies
-- **[🚀 Deployment Scenarios](./docs/architecture/02_deployment_scenarios.md)** - Infrastructure deployment patterns
-- **[⚡ Advanced Patterns](./docs/architecture/04_advanced_patterns.md)** - Complex architectural scenarios
+- **[🏛️ Master Architecture Document](./roadmap/phase-01-crawl/architecture/README.md)** - Complete enterprise architecture overview
+- **[🔗 Integration Patterns](./tech-stack.md)** - Module communication strategies
+- **[🚀 Deployment Scenarios](./roadmap/phase-01-crawl/architecture/02-docker-compose-implementation.md)** - Infrastructure deployment patterns
+- **[⚡ Advanced Patterns](./roadmap/phase-01-crawl/architecture/01-simplified-system-architecture.md)** - Complex architectural scenarios
 
 ### **🔧 Technical Module Specifications**
-- **[MOD-01: System Overview](./docs/technical-modules/01-system-overview.md)** - Infrastructure foundation
-- **[MOD-02: AI/ML Architecture](./docs/technical-modules/02-ai-ml-architecture.md)** - Artificial intelligence components
-- **[MOD-03: MLOps Platform](./docs/technical-modules/03-mlops-platform.md)** - Machine learning operations
-- **[MOD-04: Edge Computing](./docs/technical-modules/04-edge-computing.md)** - Distributed processing
-- **[MOD-05: Data Architecture](./docs/technical-modules/05-data-architecture.md)** - Data management patterns
-- **[MOD-06: API Architecture](./docs/technical-modules/06-api-architecture.md)** - Integration layer
+- **[MOD-01: System Overview](./project-overview/02-system-overview.md)** - Infrastructure foundation
+- **[MOD-02: AI/ML Architecture](./roadmap/phase-01-crawl/architecture/04-ai-pipeline-module.md)** - Artificial intelligence components
+- **[MOD-03: MLOps Platform](./roadmap/phase-01-crawl/architecture/04-ai-pipeline-module.md)** - Machine learning operations
+- **[MOD-04: Edge Computing](./roadmap/phase-01-crawl/architecture/06-video-processing-module.md)** - Distributed processing
+- **[MOD-05: Data Architecture](./roadmap/phase-01-crawl/architecture/12-data-storage-module.md)** - Data management patterns
+- **[MOD-06: API Architecture](./roadmap/phase-01-crawl/architecture/05-api-gateway-module.md)** - Integration layer
 
 ---
 
 ## 📁 **Implementation Phase Documentation**
 
 ### **🎯 Project Overview** - Strategic Foundation
-- **[Vision & Strategy](./docs/project-overview/vision/01-vision-mission-strategy.md)** - Strategic goals and long-term vision
-- **[Progressive Implementation Strategy](./docs/project-overview/strategy/01-progressive-implementation-strategy.md)** - Crawl → Walk → Run methodology
+- **[Vision & Strategy](./project-overview/01-vision-and-strategy.md)** - Strategic goals and long-term vision
+- **[Progressive Implementation Strategy](./project-overview/03-implementation-approach.md)** - Crawl → Walk → Run methodology
 
 ### **💰 Business Case** - Risk Analysis & Financial Planning
-- **[Risk Assessment Conclusions](./docs/business-case/analysis/01-risk-assessment-conclusions.md)** - Critical risk analysis and lessons learned
-- **[Resource & Budget Realignment](./docs/business-case/planning/01-resource-budget-realignment.md)** - Realistic financial planning (75% cost reduction)
-- **[Success Metrics Framework](./docs/business-case/metrics/01-success-metrics-framework.md)** - Realistic targets and measurement
-- **[Risk Mitigation Matrix](./docs/business-case/analysis/02-risk-mitigation-matrix.md)** - Comprehensive risk controls
-
-#### **🎯 Project Overview** - Strategic Foundation
-- **[Vision, Mission & Strategy](./docs/project-overview/vision/01-vision-mission-strategy.md)** - Strategic goals and long-term vision
-- **[Progressive Implementation Strategy](./docs/project-overview/strategy/01-progressive-implementation-strategy.md)** - Crawl → Walk → Run methodology
-
-#### **💰 Business Case** - Risk Analysis & Financial Planning
-- **[Risk Assessment Conclusions](./docs/business-case/analysis/01-risk-assessment-conclusions.md)** - Critical risk analysis and lessons learned
-- **[Resource & Budget Realignment](./docs/business-case/planning/01-resource-budget-realignment.md)** - Realistic financial planning (75% cost reduction)
-- **[Success Metrics Framework](./docs/business-case/metrics/01-success-metrics-framework.md)** - Realistic targets and measurement
-- **[Risk Mitigation Matrix](./docs/business-case/analysis/02-risk-mitigation-matrix.md)** - Comprehensive risk controls
+- **[Risk Assessment Conclusions](./project-overview/01-vision-and-strategy.md)** - Critical risk analysis and lessons learned
+- **[Resource & Budget Realignment](./roadmap/progressive_implementation_roadmap.md)** - Realistic financial planning (75% cost reduction)
+- **[Success Metrics Framework](./roadmap/progressive_implementation_roadmap.md)** - Realistic targets and measurement
+- **[Risk Mitigation Matrix](./project-overview/02-system-overview.md)** - Comprehensive risk controls
 
 ### **🐣 Phase 1: CRAWL** - Foundation Building (Months 1-6, $200K)
 | Category | Document | Purpose |
@@ -106,22 +88,22 @@ Welcome to the comprehensive documentation hub for the AI Video Analytics Platfo
 | **Operations** | [Support Framework](./roadmap/phase-01-crawl/operations/03-support-framework.md) | Realistic operational support model |
 
 ### **🚶 Phase 2: WALK** - Scaling Enhancement (Months 6-18, $800K)
-*Documentation planned for Phase 1 completion*
-- Kubernetes architecture and scaling
-- Advanced AI integration and edge computing
-- Enhanced security patterns and compliance
-- Team scaling and process maturity
+Documentation is available under [`roadmap/phase-02-walk/`](./roadmap/phase-02-walk/):
+- [Scalable Kubernetes Architecture](./roadmap/phase-02-walk/architecture/01-scalable-kubernetes-architecture.md) - Kubernetes architecture and scaling
+- [Advanced AI/ML Pipeline](./roadmap/phase-02-walk/architecture/02-advanced-ai-ml-pipeline.md) - Advanced AI integration and edge computing
+- [Service Mesh & Security](./roadmap/phase-02-walk/architecture/03-service-mesh-security.md) - Enhanced security patterns and compliance
+- [Scaling Development Guide](./roadmap/phase-02-walk/implementation/01-scaling-development-guide.md) - Team scaling and process maturity
 
 ### **🏃 Phase 3: RUN** - Enterprise Excellence (Months 18-36, $1.2M)
-*Documentation planned for Phase 2 completion*
-- Global multi-region deployment
-- Zero Trust security and compliance
-- AI/ML excellence and innovation
-- Operational excellence and market leadership
+Documentation is available under [`roadmap/phase-03-run/`](./roadmap/phase-03-run/):
+- [Global Enterprise Architecture](./roadmap/phase-03-run/architecture/01-global-enterprise-architecture.md) - Global multi-region deployment
+- [AI/ML Excellence Center](./roadmap/phase-03-run/architecture/02-ai-ml-excellence-center.md) - AI/ML excellence and innovation
+- [Autonomous Operations Platform](./roadmap/phase-03-run/architecture/03-autonomous-operations-platform.md) - Operational excellence
+- [Enterprise Implementation Guide](./roadmap/phase-03-run/implementation/01-enterprise-implementation-guide.md) - Enterprise team and market leadership
 
 ### **📄 Standards & Templates**
-- **[📝 Document Template](./docs/templates/document-template.md)** - Standardized document structure
-- **[🎨 Style Guide](./docs/templates/style-guide.md)** - Documentation standards & best practices
+- **[📋 Tech Stack](./tech-stack.md)** - Technology choices and standards
+- **[🗺️ Implementation Roadmap](./roadmap/progressive_implementation_roadmap.md)** - Progressive roadmap overview
 
 ---
 
@@ -213,7 +195,7 @@ git clone <repository-url>
 cd video_analytics_platform
 
 # ⚠️ IMPORTANT: Start with Master Architecture Overview
-open ./docs/architecture/00-master-architecture.md
+open ./roadmap/phase-01-crawl/architecture/README.md
 
 # Then review Phase 1 Risk-Mitigated Architecture
 open ./roadmap/phase-01-crawl/architecture/01-simplified-system-architecture.md
@@ -227,16 +209,16 @@ npm run dev      # Start simplified development environment
 ```
 
 ### 🎯 **Phase 1 Implementation Resources**
-- **[🏗️ Master Architecture](./docs/architecture/00_master_architecture.md)** - Complete system overview (START HERE)
-- **[🔧 System Overview Module](./docs/technical-modules/01-system-overview.md)** - Infrastructure foundation
+- **[🏗️ Master Architecture](./roadmap/phase-01-crawl/architecture/README.md)** - Complete system overview (START HERE)
+- **[🔧 System Overview Module](./project-overview/02-system-overview.md)** - Infrastructure foundation
 - **[🏗️ Phase 1 Simplified Architecture](./roadmap/phase-01-crawl/architecture/01-simplified-system-architecture.md)** - MVP technical design
 - **[⚙️ MVP Development Guide](./roadmap/phase-01-crawl/implementation/01-mvp-development-guide.md)** - Complete implementation guide
 - **[🎓 Training Framework](./roadmap/phase-01-crawl/operations/02-training-programs.md)** - User training strategy
 - **[🤝 Support Model](./roadmap/phase-01-crawl/operations/03-support-framework.md)** - Operational support planning
 
 ### 📊 **Progress Monitoring & Success Management**
-- **[📈 Success Metrics Framework](./docs/business-case/metrics/01-success-metrics-framework.md)** - Performance measurement
-- **[🛡️ Risk Mitigation Matrix](./docs/business-case/analysis/02-risk-mitigation-matrix.md)** - Risk management and controls
+- **[📈 Success Metrics Framework](./roadmap/progressive_implementation_roadmap.md)** - Performance measurement
+- **[🛡️ Risk Mitigation Matrix](./project-overview/02-system-overview.md)** - Risk management and controls
 - **[🔄 Change Management Strategy](./roadmap/phase-01-crawl/operations/01-change-management.md)** - User adoption strategy
 
 ---
@@ -250,13 +232,13 @@ npm run dev      # Start simplified development environment
 - **Quality Assurance**: Documentation standards and reviews
 
 ### Getting Help
-- **Architecture Questions**: Review [Master Architecture](./docs/architecture/00_master_architecture.md)
-- **Technical Modules**: Check [Technical Module Documentation](./docs/technical-modules/)
-- **Integration Support**: See [Integration Patterns](./docs/architecture/01_integration_patterns.md)
-- **Deployment Assistance**: Consult [Deployment Scenarios](./docs/architecture/02_deployment_scenarios.md)
+- **Architecture Questions**: Review [Master Architecture](./roadmap/phase-01-crawl/architecture/README.md)
+- **Technical Modules**: Check [Project Overview Documentation](./project-overview/)
+- **Integration Support**: See [Tech Stack](./tech-stack.md)
+- **Deployment Assistance**: Consult [Docker Compose Implementation](./roadmap/phase-01-crawl/architecture/02-docker-compose-implementation.md)
 
 ### Documentation Standards
-All documentation follows the [Documentation Style Guide](./docs/templates/style-guide.md) to ensure consistency, quality, and maintainability across the platform.
+All documentation follows the [Tech Stack](./tech-stack.md) and project standards to ensure consistency, quality, and maintainability across the platform.
 
 ---
 
@@ -312,9 +294,9 @@ All documentation follows the [Documentation Style Guide](./docs/templates/style
 ## 🚀 **Getting Started with Risk-Mitigated Implementation**
 
 ### **📋 Executives & Decision Makers**
-1. **[📊 Critical Risk Analysis](./docs/business-case/analysis/01-risk-assessment-conclusions.md)** - Understand why the original approach was high-risk
-2. **[💰 Revised Business Case](./docs/business-case/planning/01-resource-budget-realignment.md)** - See the 75% cost reduction strategy
-3. **[🎯 Success Framework](./docs/business-case/metrics/01-success-metrics-framework.md)** - Review realistic ROI expectations
+1. **[📊 Critical Risk Analysis](./project-overview/01-vision-and-strategy.md)** - Understand why the original approach was high-risk
+2. **[💰 Revised Business Case](./roadmap/progressive_implementation_roadmap.md)** - See the 75% cost reduction strategy
+3. **[🎯 Success Framework](./roadmap/progressive_implementation_roadmap.md)** - Review realistic ROI expectations
 
 ### **🏗️ Technical Teams & Architects**
 1. **[⚙️ Phase 1 Architecture](./roadmap/phase-01-crawl/architecture/01-simplified-system-architecture.md)** - Start with simplified, risk-mitigated foundation

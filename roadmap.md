@@ -32,7 +32,7 @@ Close every architectural coin-flip before product code is written.
 
 ---
 
-## Phase 1 — CRAWL (Months 1–6)
+## Phase 1: Crawl (Months 1–6)
 
 Per the implementation-approach doc: single-cluster deployment, simplified stack, 50–100 concurrent streams, <500ms latency, 95% uptime.
 
@@ -47,7 +47,7 @@ The smallest possible path from a camera to a visible event.
 - **Minimal dashboard** (Next.js): one route, live annotated frame, rolling event list.
 - **Portfolio update:** landing page embeds the dashboard in read-only demo mode.
 
-**Exit criterion:** anyone with the public URL sees live detections on the sample stream with <2s end-to-end latency.
+**Exit criterion:** anyone with the public URL sees live detections on the sample stream with <2s end-to-end latency (perceived end-to-end UI latency; AI pipeline target is <500ms processing latency).
 
 ### Subphase 1B — Make It a Platform (Weeks 9–16)
 
@@ -77,7 +77,7 @@ Make it real. Prove the targets.
 
 ---
 
-## Phase 2 — WALK (Months 7–18)
+## Phase 2: Walk (Months 7–18)
 
 Per the implementation-approach doc: Kubernetes microservices, service mesh, advanced AI, 500–1,000 concurrent streams, <300ms latency, 99% uptime.
 
@@ -120,7 +120,7 @@ Prove the Phase 2 targets.
 
 ---
 
-## Phase 3 — RUN (Months 19–36)
+## Phase 3: Run (Months 19–36)
 
 Per the implementation-approach doc: multi-region, enterprise security, edge computing, continuous learning, 5,000+ concurrent streams, <200ms latency, 99.99% uptime.
 

@@ -31,12 +31,12 @@ This folder contains the complete **Phase 1 Architecture Documentation** for the
 | **[02-docker-compose-implementation.md](./02-docker-compose-implementation.md)** | Docker containerization and deployment details | Developers, DevOps engineers, system administrators | Intermediate |
 | **[03-monitoring-observability.md](./03-monitoring-observability.md)** | Monitoring, logging, and observability framework | SRE engineers, developers, operations teams | Intermediate |
 | **[04-ai-pipeline-module.md](./04-ai-pipeline-module.md)** | AI/ML pipeline and computer vision processing framework | AI engineers, developers, technical leads, data scientists | Advanced |
-| **[phase_01_simplified_architecture.md](./phase_01_simplified_architecture.md)** | Risk mitigation strategy and business justification | Executives, architects, technical leads, development teams | Beginner |
+| **[01-simplified-system-architecture.md](./01-simplified-system-architecture.md)** | Risk mitigation strategy and business justification | Executives, architects, technical leads, development teams | Beginner |
 
 ### 📖 **Recommended Reading Order**
 
 #### **For Executives and Business Stakeholders**
-1. Start with → **[phase_01_simplified_architecture.md](./phase_01_simplified_architecture.md)**
+1. Start with → **[01-simplified-system-architecture.md](./01-simplified-system-architecture.md)**
    - Executive summary and risk mitigation approach
    - Budget breakdown and ROI projections
    - Success criteria and business metrics
@@ -58,10 +58,10 @@ This folder contains the complete **Phase 1 Architecture Documentation** for the
 
 ### **Technology Stack (Simplified)**
 ```yaml
-Frontend:     React.js + TypeScript + Material-UI
-Backend:      Node.js + Express + JWT Authentication
+Frontend:     React + Next.js + TypeScript + shadcn/ui + Tailwind CSS
+Backend:      Go + Gin + JWT Authentication
 Database:     PostgreSQL + Redis Cache
-AI/ML:        OpenCV + Pre-trained Models (YOLO, COCO)
+AI/ML:        Python + PyTorch + ONNX Runtime + OpenCV (YOLO, COCO)
 Deployment:   Docker Compose (single-server)
 Monitoring:   Prometheus + Grafana + Loki
 Security:     HTTPS + JWT + RBAC + Audit Logging
@@ -120,7 +120,7 @@ cat 03-monitoring-observability.md
 ```
 
 ### **For Business Stakeholders**
-1. **Read** → [phase_01_simplified_architecture.md](./phase_01_simplified_architecture.md) for business context
+1. **Read** → [01-simplified-system-architecture.md](./01-simplified-system-architecture.md) for business context
 2. **Review** → Budget breakdown and ROI projections (Section 💰)
 3. **Understand** → Success metrics and go/no-go criteria (Section 📈)
 
