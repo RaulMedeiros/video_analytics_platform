@@ -101,6 +101,60 @@ graph TB
 
 ---
 
+## 🏗️ Kubernetes Cluster Configuration Details
+
+### **Node Specifications and Namespace Strategy**
+```yaml
+KUBERNETES_SETUP:
+  Cluster_Type: "Production-grade multi-node cluster"
+  Node_Configuration:
+    Master_Nodes: 3
+    Worker_Nodes: "6-12 (auto-scaling)"
+    Edge_Nodes: "3-6 (geographic distribution)"
+
+  Node_Specifications:
+    Master_Nodes:
+      CPU: "4 cores"
+      Memory: "16GB RAM"
+      Storage: "100GB SSD"
+      Role: "Control plane, etcd, API server"
+
+    Worker_Nodes:
+      CPU: "8-16 cores"
+      Memory: "32-64GB RAM"
+      Storage: "500GB SSD + 2TB HDD"
+      GPU: "Optional NVIDIA RTX 4090 for AI workloads"
+      Role: "Application workloads, video processing"
+
+    Edge_Nodes:
+      CPU: "4-8 cores"
+      Memory: "16-32GB RAM"
+      Storage: "250GB SSD"
+      Role: "Local video processing, caching"
+
+NAMESPACE_ORGANIZATION:
+  Production_Namespaces:
+    - video-analytics-frontend     # Web applications and UI services
+    - video-analytics-api         # REST API and GraphQL services
+    - video-analytics-processing  # Video processing and AI services
+    - video-analytics-data        # Database and storage services
+    - video-analytics-monitoring  # Observability and logging
+    - video-analytics-security    # Security tools and secrets
+
+  Environment_Namespaces:
+    - development                 # Development environment
+    - staging                     # Pre-production testing
+    - production                  # Live production system
+
+  Infrastructure_Namespaces:
+    - kube-system                 # Kubernetes system components
+    - istio-system               # Service mesh (optional)
+    - cert-manager               # Certificate management
+    - ingress-nginx              # Ingress controller
+```
+
+---
+
 ## 🔧 Microservices Architecture
 
 ### **Service Decomposition Strategy**
@@ -181,6 +235,74 @@ MICROSERVICES_ARCHITECTURE:
       technology: "Go with time-series databases"
       scaling: "Analytics workload optimization"
       dependencies: "InfluxDB, Elasticsearch cluster"
+```
+
+### **Core Business Service API Contracts**
+```yaml
+USER_MANAGEMENT_SERVICE:
+  Responsibilities:
+    - User authentication and authorization
+    - Role-based access control (RBAC)
+    - Session management and tokens
+    - User profile and preferences
+  API_Endpoints:
+    - POST /auth/login
+    - POST /auth/refresh
+    - GET /users/{id}
+    - PUT /users/{id}/permissions
+  Database: "PostgreSQL (dedicated schema)"
+
+VIDEO_STREAM_SERVICE:
+  Responsibilities:
+    - Video stream ingestion and management
+    - Stream quality and format conversion
+    - Real-time stream routing and load balancing
+    - Stream health monitoring
+  API_Endpoints:
+    - POST /streams
+    - GET /streams/{id}
+    - PUT /streams/{id}/quality
+    - DELETE /streams/{id}
+  Database: "PostgreSQL + Redis (stream metadata + caching)"
+
+AI_ANALYTICS_SERVICE:
+  Responsibilities:
+    - AI model management and versioning
+    - Real-time video analysis and processing
+    - Object detection and classification
+    - Anomaly detection and alerting
+  API_Endpoints:
+    - POST /analysis/detect
+    - GET /analysis/results/{id}
+    - POST /models/deploy
+    - GET /models/performance
+  Database: "PostgreSQL + InfluxDB (results + metrics)"
+
+NOTIFICATION_SERVICE:
+  Responsibilities:
+    - Real-time alert generation and routing
+    - Multi-channel notification delivery
+    - Notification preferences and rules
+    - Alert escalation and acknowledgment
+  API_Endpoints:
+    - POST /notifications/send
+    - GET /notifications/history
+    - PUT /notifications/preferences
+    - POST /notifications/acknowledge
+  Database: "PostgreSQL + Redis (rules + queuing)"
+
+REPORTING_SERVICE:
+  Responsibilities:
+    - Report generation and scheduling
+    - Data aggregation and analytics
+    - Export capabilities (PDF, CSV, API)
+    - Dashboard data preparation
+  API_Endpoints:
+    - POST /reports/generate
+    - GET /reports/{id}
+    - POST /reports/schedule
+    - GET /analytics/dashboard
+  Database: "ClickHouse + PostgreSQL (analytics + metadata)"
 ```
 
 ### **Service Communication Patterns**
@@ -317,6 +439,182 @@ PERFORMANCE_SPECIFICATIONS:
     auto_scaling_response: "<2 minutes for scaling events"
     resource_efficiency: "70%+ average resource utilization"
     cost_per_stream: "Optimized cost per processed stream"
+```
+
+---
+
+## 🌐 Edge Computing Architecture
+
+### **Edge Node Deployment Strategy**
+```yaml
+EDGE_COMPUTING_DESIGN:
+  Node_Placement_Strategy:
+    Geographic_Distribution: "2-3 locations covering primary user regions"
+    Network_Topology: "Minimize latency to video sources"
+    Redundancy: "N+1 redundancy for high availability"
+
+  Edge_Node_Specifications:
+    Hardware_Requirements:
+      CPU: "4-8 cores (Intel/AMD)"
+      Memory: "16-32GB RAM"
+      Storage: "250GB SSD (local caching)"
+      Network: "1 Gbps minimum bandwidth"
+      GPU: "Optional for local AI processing"
+
+    Software_Stack:
+      Container_Runtime: "Docker + Kubernetes (K3s for lightweight)"
+      Processing_Engine: "Lightweight video processing"
+      Cache_Layer: "Redis for local data caching"
+      Monitoring: "Prometheus node exporter"
+
+  Edge_Processing_Capabilities:
+    Local_Video_Processing:
+      - Basic object detection (reduced model complexity)
+      - Stream quality optimization
+      - Local caching of frequently accessed data
+      - Bandwidth optimization and compression
+
+    Data_Synchronization:
+      - Periodic sync with central cluster
+      - Critical event immediate forwarding
+      - Local buffering during network outages
+      - Conflict resolution for data consistency
+```
+
+### **Edge-to-Core Communication**
+```mermaid
+graph TB
+    subgraph "Central Processing Cluster"
+        CORE_API[Core API Gateway]
+        CORE_PROC[Central Processing]
+        CORE_AI[Advanced AI Models]
+        CORE_DB[Central Database]
+    end
+
+    subgraph "Edge Network"
+        subgraph "Edge Location A"
+            EDGE_A[Edge Node A]
+            CACHE_A[Local Cache A]
+            PROC_A[Local Processing A]
+        end
+
+        subgraph "Edge Location B"
+            EDGE_B[Edge Node B]
+            CACHE_B[Local Cache B]
+            PROC_B[Local Processing B]
+        end
+
+        subgraph "Edge Location C"
+            EDGE_C[Edge Node C]
+            CACHE_C[Local Cache C]
+            PROC_C[Local Processing C]
+        end
+    end
+
+    subgraph "Video Sources"
+        CAM1[Camera Cluster 1]
+        CAM2[Camera Cluster 2]
+        CAM3[Camera Cluster 3]
+    end
+
+    CAM1 --> EDGE_A
+    CAM2 --> EDGE_B
+    CAM3 --> EDGE_C
+
+    EDGE_A --> PROC_A
+    EDGE_B --> PROC_B
+    EDGE_C --> PROC_C
+
+    PROC_A --> CACHE_A
+    PROC_B --> CACHE_B
+    PROC_C --> CACHE_C
+
+    EDGE_A -.->|Critical Events| CORE_API
+    EDGE_B -.->|Critical Events| CORE_API
+    EDGE_C -.->|Critical Events| CORE_API
+
+    EDGE_A -.->|Complex Analysis| CORE_PROC
+    EDGE_B -.->|Complex Analysis| CORE_PROC
+    EDGE_C -.->|Complex Analysis| CORE_PROC
+
+    CORE_PROC --> CORE_AI
+    CORE_AI --> CORE_DB
+```
+
+---
+
+## 💾 Data Architecture
+
+### **Database Scaling Strategy**
+```yaml
+POSTGRESQL_SCALING:
+  Master_Slave_Configuration:
+    Master_Node:
+      Role: "Write operations, critical reads"
+      Specifications: "16 cores, 64GB RAM, NVMe SSD"
+      Backup_Strategy: "Continuous WAL archiving + daily snapshots"
+
+    Read_Replicas:
+      Count: "2-3 replicas"
+      Role: "Read-only queries, reporting, analytics"
+      Specifications: "8 cores, 32GB RAM, SSD"
+      Lag_Tolerance: "<5 seconds"
+
+  Connection_Pooling:
+    Technology: "PgBouncer"
+    Pool_Size: "500-1000 connections"
+    Distribution: "Read queries to replicas, writes to master"
+
+  Partitioning_Strategy:
+    Video_Metadata: "Time-based partitioning (monthly)"
+    Analytics_Data: "Horizontal partitioning by source"
+    User_Data: "Minimal partitioning (size-based)"
+
+REDIS_CLUSTER_DESIGN:
+  Cluster_Configuration:
+    Nodes: "6 nodes (3 masters + 3 replicas)"
+    Memory_Per_Node: "16-32GB"
+    Persistence: "RDB + AOF for durability"
+
+  Data_Distribution:
+    Session_Data: "User sessions and authentication tokens"
+    Cache_Data: "Frequently accessed video metadata"
+    Real_Time_Data: "Live stream status and metrics"
+    Pub_Sub: "Real-time notifications and events"
+
+ANALYTICS_DATABASE:
+  Technology: "ClickHouse or InfluxDB"
+  Purpose: "Time-series analytics and reporting"
+  Configuration:
+    Nodes: "3-node cluster"
+    Storage: "Columnar storage for analytical queries"
+    Retention: "5 years with automatic archiving"
+```
+
+### **Object Storage Strategy**
+```yaml
+OBJECT_STORAGE_DESIGN:
+  Technology: "MinIO (self-hosted) or AWS S3 (cloud)"
+  Storage_Tiers:
+    Hot_Storage:
+      Purpose: "Recent video files (last 30 days)"
+      Access_Pattern: "Frequent access, low latency"
+      Replication: "3x replication for high availability"
+
+    Warm_Storage:
+      Purpose: "Archive video files (30 days - 1 year)"
+      Access_Pattern: "Occasional access, moderate latency"
+      Replication: "2x replication with erasure coding"
+
+    Cold_Storage:
+      Purpose: "Long-term archive (1+ years)"
+      Access_Pattern: "Rare access, high latency acceptable"
+      Storage: "Glacier-class storage or tape backup"
+
+  Lifecycle_Management:
+    Automated_Tiering: "Based on access patterns and age"
+    Compression: "Video-optimized compression algorithms"
+    Deduplication: "Content-based deduplication"
 ```
 
 ---
