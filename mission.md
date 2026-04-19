@@ -1,8 +1,14 @@
 # Mission
 
+## Project Names
+
+- **Formal name**: "AI Video Analytics Platform" — used in all documentation, architecture docs, and external-facing materials.
+- **Product codename**: "Aperture Analytics" — used in the UI, design system, and brand assets.
+- **Repository slug**: `video_analytics_platform` — the filesystem and GitHub identifier; not a display name.
+
 ## One-liner
 
-**video_analytics_platform** is an enterprise-grade AI video analytics platform — built in the open as the flagship portfolio piece of a computer vision engineer — that ingests thousands of concurrent camera streams, runs real-time AI inference, and delivers operational intelligence through a cloud-native, progressively-scaled architecture.
+**AI Video Analytics Platform** is an enterprise-grade AI video analytics platform — built in the open as the flagship portfolio piece of a computer vision engineer — that ingests thousands of concurrent camera streams, runs real-time AI inference, and delivers operational intelligence through a cloud-native, progressively-scaled architecture.
 
 ## Dual Purpose
 

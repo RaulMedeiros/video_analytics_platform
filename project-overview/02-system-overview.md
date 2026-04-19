@@ -6,6 +6,7 @@ date: "2024-09-26"
 audience: ["technical_teams", "architects", "engineers", "stakeholders"]
 complexity: "intermediate"
 topics: ["system_architecture", "technology_stack", "platform_overview"]
+implementation_phase: "crawl"
 ---
 
 # AI Video Analytics Platform - System Overview

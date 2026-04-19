@@ -69,7 +69,7 @@ graph TB
     subgraph "🌐 Single Server Deployment"
         subgraph "Application Layer"
             WEB[Web Dashboard<br/>React + TypeScript]
-            API[REST API<br/>Node.js + Express]
+            API[REST API<br/>Go + Gin]
         end
 
         subgraph "Processing Layer"
@@ -166,8 +166,8 @@ graph TB
         subgraph "Application Cluster"
             WEB1[Web App 1<br/>React Dashboard]
             WEB2[Web App 2<br/>React Dashboard]
-            API1[API Server 1<br/>Node.js REST]
-            API2[API Server 2<br/>Node.js REST]
+            API1[API Server 1<br/>Go + Gin REST]
+            API2[API Server 2<br/>Go + Gin REST]
         end
 
         subgraph "Processing Cluster"
