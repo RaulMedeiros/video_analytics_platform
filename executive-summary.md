@@ -49,11 +49,31 @@ Clients who cannot accept AGPL-licensed models (YOLOv8) are served with a docume
 
 ## Delivery Roadmap at a Glance
 
-| Phase | Timeline | Scale | Latency | Uptime | Key Milestone |
-|---|---|---|---|---|---|
-| **Crawl** | Months 1–6 | 50–100 streams | <500ms | 95% | Live public demo; published benchmarks |
-| **Walk** | Months 7–18 | 500–1,000 streams | <300ms | 99% | Triton serving; custom model training; first external client |
-| **Run** | Months 19–36 | 5,000+ streams | <200ms | 99.99% | Multi-region; Jetson Orin edge; continuous learning loop |
+The platform follows a **Crawl → Walk → Run** strategy across 36 months, with each phase broken into subphases that each ship a public-facing artifact. No six-month stretches of invisible work.
+
+### Phase 1 — Crawl (Months 1–6) · 50–100 streams · <500ms · 95% uptime
+
+| Subphase | Focus | Public Artifact |
+|---|---|---|
+| **1A** — First Frame End-to-End | Ingest → YOLOv8 inference → live dashboard | Embedded live demo on landing page |
+| **1B** — Platform | Multi-camera, ByteTrack, zone logic, MinIO clip archival, full observability | Architecture tour page; live GPU/FPS dashboards |
+| **1C** — Hardening | Load test to 100 streams; MOT17 evaluation harness; reliability drills | Benchmarks page v1; first technical blog post |
+
+### Phase 2 — Walk (Months 7–18) · 500–1,000 streams · <300ms · 99% uptime
+
+| Subphase | Focus | Public Artifact |
+|---|---|---|
+| **2A** — Migration | Kafka replaces Redis Streams; Istio mesh; Triton Inference Server; Vault + Keycloak | Migration write-up; revised architecture page |
+| **2B** — Advanced AI | Custom model training (MLflow); pose estimation; TensorRT engines; A/B testing | CV-specific blog post; pose overlay in live demo |
+| **2C** — Scaling | Load test to 1,000 streams; SLO dashboard; first external client deployment | Public SLO dashboard; external client case study |
+
+### Phase 3 — Run (Months 19–36) · 5,000+ streams · <200ms · 99.99% uptime
+
+| Subphase | Focus | Public Artifact |
+|---|---|---|
+| **3A** — Multi-region & Edge | Multi-cluster Kubernetes; Jetson Orin edge runtime; hot/warm/cold data tiering | Multi-region architecture page; cross-region latency benchmarks |
+| **3B** — Security & Compliance | Full zero-trust; HSM key management; SOC 2 Type I readiness; pen test | Security posture page; public findings triage |
+| **3C** — Continuous Learning | Production feedback → labeling → retraining → canary; self-healing; anomaly detection on telemetry | Demo video; comprehensive benchmark report; case studies |
 
 Every phase ships a public artifact — live demo, architecture write-up, benchmark report, or blog post. No invisible development.
 
